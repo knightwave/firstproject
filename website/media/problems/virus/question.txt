@@ -1,0 +1,33 @@
+As you all know Digo is not just a programmer, he is also a microbiologist. Recently he created a new virus which replicates very quickly. To be precise, if we have a virus at a particular point (x,y) then in one minute it dies and just before dying it gives birth to four other viruses which will be born at (x,y+1), (x,y-1), (x+1,y), and (x-1,y). Note that there maybe more than one virus at any point and they behave independent of each other.
+
+Let us consider an infinite cartesian plane. Initially at time t = 0 minutes, Digo placed a virus at (0,0) and wonders how they might grow in number. Your task is very simple. You have to answer Q queries. Each query is represented as "x y z" (quotes for clarity) for which you have to find how many viruses infest the point (x,y) after z minutes.
+As the answer can be huge so output it modulo 10^8 + 2013.
+
+Input:
+
+On the first line there will be an integer Q, representing the number of queries. 
+Q lines follow each having three integers x, y, z where (x,y) is the point under consideration and x represents the time elapsed from the start.
+ 
+Output:
+
+Output Q numbers each of them answering the queries given in the input. The ith number should answer the ith query.
+
+Constraints:
+
+1 <= Q <= 10^5
+1 <= x,y <= 10^6
+1 <= z <= 2*(10^6)
+0 <= answer < 100002013
+
+Sample Input:
+
+3
+0 0 0
+0 0 1
+0 0 2
+
+Sample Output:
+
+1
+0
+4

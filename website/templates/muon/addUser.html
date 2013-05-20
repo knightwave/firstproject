@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block app-content %}
+{% for error in errors %}
+	{{error}}
+{% endfor %}
+{% for s in success %}
+	{{s}}
+{% endfor %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<label for="name">Name: </label>
+	<input type="text" name="name" id="name" required="required"/>
+	<label for="username"> Username: </label>
+	<input type="text" name="username" id="username" required="required"/>
+	<input type="submit" name="addUser_submit" value="Add User"/>
+</form>
+{% endblock %}

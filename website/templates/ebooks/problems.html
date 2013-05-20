@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block app-content %}
+	<p><b>List of Problems</b></p>
+	<ol>
+	{% for key,value in list_problems %}
+		<li>
+			<a href="/ebooks/problems/{{key}}">{{value}}</a>
+	{% endfor %}
+	</ol>
+	{% if problemKey %}
+		<p><b><u>{{ problemValue }}</u></b></p>		
+			<div style="width:1000px;overflow:scroll;">
+				<pre>{{ statement }}</pre>
+			</div>
+	<form name="compiler" action="/ebooks/submit/{{ problemKey}}" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		Enter your Code:
+		<br/>
+		<textarea id="code" name="code" rows="20" cols="75">{{code_value}}</textarea>
+		<br/>
+		<input type="submit" value="Submit" name="submit_{{problemKey}}" />
+	</form>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block app-content %}
+	<form method="POST" enctype="multipart/form-data" action="">
+		{% csrf_token %}
+		From:
+		<input type="text" name="from_name" />
+		<br/>
+		To:
+		<input type="text" name="to_name" />
+		<br/>
+		Message:
+		<textarea name="message"></textarea>
+		<br/>
+		<input type="submit" value="Send Mail" />
+	</form>
+{% endblock %}

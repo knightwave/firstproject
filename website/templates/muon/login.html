@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block app-content %}
+<form action="" method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
+	<label for="username">Username: </label>
+	<input type="text" name="username" id="username" required="required"/>
+	<label for="password">Password: </label>
+	<input type="password" name="password" id="password" required="required"/>
+	<input type="Submit" value="Login" name="loginSumbit"/>
+</form>
+{% endblock %}

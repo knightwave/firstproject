@@ -1,0 +1,43 @@
+Digo has given you an array of N nonnegative numbers A[1], A[2], ..., A[N]. He considers a nonnegative integer M as good if the sequence A[1] xor M, A[2] xor M, .., A[N] xor M is an increasing sequence. Here, xor is exclusive or, "xor" in Pascal, "^" in C++. Consider the set S of all nonnegative integers M which Digo considers as good.
+
+What is the smallest element in S?
+
+Input
+
+The first line of the input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case has two lines. The first line contains a single integer N. The second line contains N space separated integers A[1], A[2], .., A[N].
+
+Output 
+
+Output T lines each containing the required answer i.e., if the set S is empty for the corresponding test case then output "-1"(without quotes) otherwise output the smallest element in S.
+
+Constraints
+
+1 <= T <= 200
+1 <= N <= 1000
+0 <= A[i] <= 10^18(10 raised to 18)
+All A[i]'s will be distinct.
+
+Sample Input
+
+3
+4
+3 13 8 10
+5
+10 11 15 5 6
+3
+2 1 3
+
+Sample Output
+
+4
+8
+-1
+
+Output Details
+
+In the first test case, If we xor the whole array with 4 then we get 7, 9, 12, 14 which is an increasing sequence.
+It can be easily seen that 4 is the smallest number. One other possible good number is 20 but no number less than 4 is good.
+
+In the second test case, it can be easily seen that 8 is the required number.
+
+In the third case no nonnegative integer is good hence the answer is -1

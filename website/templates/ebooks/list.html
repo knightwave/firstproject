@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head %}
+{% endblock %}
+{% block app-content %}
+	{% if files %}
+		<ul>
+			{% for file in files %}
+			<li>
+				<a href="/media/ebooks/{{ file }}">{{ file }}</a>
+			</li>
+			{% endfor %}
+		<ul/>
+	{% endif %}
+	<form name="change" action="/ebooks/list/" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<p>{{ form.non_field_errors }}</p>
+		<p>{{ form.file.label_tag }}  {{ form.file.help_text }}</p>
+		<p>
+ 		{{ form.file_errors }}
+		{{ form.file }}
+		</p>
+		<p>
+	  <button type="submit" id="btn">Upload Files!</button>
+ 		<!--<input type="submit" value="Submit" />-->
+		</p>
+	</form>
+  	<div id="response"></div>
+			<ol id="image-list">
+			{% for out in output %}
+				<li>
+					{{out}}
+				</li>
+			{% endfor %}
+			</ol>
+			<ol id="image-list">
+			{% for err in error %}
+				<li>
+					{{err}}
+				</li>
+			{% endfor %}
+			</ol>
+
+	<script type="text/javascript">
+		var x = document.getElementById("id_file");
+		x.setAttribute("multiple","multiple");
+	</script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/ebooks/jquery-1.8.min.js">		
+	</script>
+	<!--<script type="text/javascript" src="{{ STATIC_URL }}js/ebooks/upload.js">
+	</script>-->
+{% endblock %}

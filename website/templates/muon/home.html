@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block app-content %}
+{% if flag_admin == 1 %}
+	<h2>Hello Admin, have a nice day :) and remember <br/>
+		WITH GREAT POWER COMES GREAT RESPONSIBILTY!
+	</h2>
+	<a href="/muon/addUser" target=""> Add a user </a>
+	<a href="/muon/listUsers" target=""> Display list of users </a>	
+	{% if users %}
+		{% for user in users %}
+			<br/><a href="/muon/deleteUser/{{user}}" target=''>{{user}}</a>
+		{% endfor %}
+	{% endif %}
+{% else %}
+<h2>Hello {{username}}, have a nice day :)</h2>
+{% endif %}
+{% if blog %}
+	<a href="/blog/">Blog</a>
+{% endif %}
+<a href="/muon/logout/" target="">Logout</a>
+{% endblock %}

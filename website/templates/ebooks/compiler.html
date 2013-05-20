@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block app-content %}
+	{% if result %}
+		{% if error %}
+			<u>Error</u>
+			<br/>
+			<pre><p>{{compile_error}}</p></pre>
+			<br/>
+		{% else %}
+			<u>Result</u>
+			<br/>
+			<pre><p>{{output}}</p></pre>
+			<br/>
+		{% endif %}
+	{% endif %}
+
+	{% load tag_cloud %}
+		{% tag_cloud_for_model blog.comment as tags with steps=6 min_count=1 distribution=log %}
+	{% for tag in tags %}{{tag.name}} ({{tag.font_size}})  {% endfor %}
+
+	<form name="compiler" action="/ebooks/compile/" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		Enter your Code:
+		<br/>
+		<textarea id="code" name="code" rows="20" cols="75">{{code_value}}</textarea>
+		<br/>
+		Enter the inputs:
+		<br/>
+		<textarea id="input" name="input" rows="4" cols="20">{{input_value}}</textarea>
+		<br/>
+		<input type="submit" value="Compile" name="compile_submit" />
+	</form>
+{% endblock %}
