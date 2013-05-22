@@ -14,7 +14,7 @@
 		{% endfor %}
 	{% endif %}
 
-	<form name="blogPost" method="post" action="" enctype="multipart/form-data">
+	<form name="blogPost" method="post" action="/blog/post/" enctype="multipart/form-data">
 		{% csrf_token %}
 		Enter title:<input type="text" name="post_title" /><br/>
 		Tags:<input type="text" name="tags" /><br/>
@@ -23,15 +23,15 @@
 		<input type="submit" value="Post" name="post_submit" />
 	</form>
 
-
 {% load tagging_tags %}
  
     {% tag_cloud_for_model blog.Post as tags with steps=20 min_count=1 distribution=log %}
     {% for tag in tags %}
     <font style="font-size:{{ tag.font_size|add:"10" }}pt">
-        <a href="/blog/tags/{{tag}}" title="{{ tag.count }}">{{ tag.name }}</a>  
+        <a href="/blog/tags/{{tag}}/" title="{{ tag.count }}">{{ tag.name }}</a>  
     </font>
     {% endfor %}
+
 	{% if posts %}
 		<br/>
 		<u><b>Posts</b></u><br/>
@@ -40,6 +40,7 @@
 				<p>Author:{{post.author}}</p>
 				<p>Title: {{post.title}}</p>
 				<p>Date: {{post.date}}</p>
+				<p>Tag: {{post.tags}}</p>
 				<p>Post: {{post}}</p>
 				<u>Comments:</u>
 				<div class="comments_{{post.id}}" style="background-color:">

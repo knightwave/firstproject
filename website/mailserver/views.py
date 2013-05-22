@@ -12,7 +12,7 @@ def sendMail(request):
 		from_name = request.POST['from_name']
 		message = request.POST['message']
 		send_mail('Subject', 'Hello World', 'pramod231193@gmail.com', ['theknightwave@gmail.com'], fail_silently=False)
-		return render_to_response("mailserver/sendMail.html",{},context_instance=RequestContext(request))	
+		return render_to_response("mailserver/sendMail.html",{'Post':1},context_instance=RequestContext(request))	
 	else:
 		return render_to_response("mailserver/sendMail.html",{},context_instance=RequestContext(request))
 
